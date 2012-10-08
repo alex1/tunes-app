@@ -1,0 +1,65 @@
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Somes Tunes I Am Learning</a>
+      <div class="nav-collapse collapse">
+        <form class="navbar-form pull-right">
+          <input class="span2" type="text" placeholder="Email">
+          <input class="span2" type="password" placeholder="Password">
+          <button type="submit" class="btn">Sign in</button>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <%= link_to 'New Tune', new_tune_path %>
+      <div class="accordion">
+        <% @tunes.each do |tune| %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              <%= tune.name %>
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <audio id="<%= tune.name %> slow" class="tune" autobuffer controls>
+                <source src="audios/<%= tune.path_to_mp3_slow %>" type="audio/mpeg" />
+                <source src="audios/<%= tune.path_to_ogg_slow %>" type="audio/ogg" />
+                <source src="audios/<%= tune.path_to_wav_slow %>" type="audio/wav" />
+                Audio tag not supported
+              </audio>
+              <h3>Fast</h3>
+              <audio id="<%= tune.name %> fast" class="tune" autobuffer controls>
+                <source src="audios/<%= tune.path_to_mp3_fast %>" type="audio/mpeg" />
+                <source src="audios/<%= tune.path_to_ogg_fast %>" type="audio/ogg" />
+                <source src="audios/<%= tune.path_to_wav_fast %>" type="audio/wav" />
+                Audio tag not supported
+              </audio>
+              <br />
+              <%= link_to 'Edit', edit_tune_path(tune) %> <%= link_to 'Destroy', tune, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <br />
+    </div>
+  </div>
+  <hr>
+  <footer>
+    <p>&copy; Company 2012</p>
+  </footer>
+</div> <!-- /container -->

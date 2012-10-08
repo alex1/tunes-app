@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  path_to_mp3_slow: MyString
+  path_to_mp3_fast: MyString
+
+two:
+  name: MyString
+  path_to_mp3_slow: MyString
+  path_to_mp3_fast: MyString
