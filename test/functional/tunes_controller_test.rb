@@ -18,7 +18,7 @@ class TunesControllerTest < ActionController::TestCase
 
   test "should create tune" do
     assert_difference('Tune.count') do
-      post :create, :tune => { :name => @tune.name, :path_to_mp3_fast => @tune.path_to_mp3_fast, :path_to_mp3_slow => @tune.path_to_mp3_slow }
+      post :create, :tune => { :name => @tune.name}
     end
 
     assert_redirected_to tune_path(assigns(:tune))
@@ -35,7 +35,7 @@ class TunesControllerTest < ActionController::TestCase
   end
 
   test "should update tune" do
-    put :update, :id => @tune, :tune => { :name => @tune.name, :path_to_mp3_fast => @tune.path_to_mp3_fast, :path_to_mp3_slow => @tune.path_to_mp3_slow }
+    put :update, :id => @tune, :tune => { :name => @tune.name}
     assert_redirected_to tune_path(assigns(:tune))
   end
 

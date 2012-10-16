@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007221859) do
+ActiveRecord::Schema.define(:version => 20121012225843) do
+
+  create_table "assets", :force => true do |t|
+    t.integer "tune_id"
+    t.integer "file_id"
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "tune_id"
+  end
 
   create_table "notes", :force => true do |t|
     t.text     "notes"
@@ -20,14 +34,8 @@ ActiveRecord::Schema.define(:version => 20121007221859) do
 
   create_table "tunes", :force => true do |t|
     t.string   "name"
-    t.string   "path_to_mp3_slow"
-    t.string   "path_to_mp3_fast"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "path_to_ogg_slow"
-    t.string   "path_to_ogg_fast"
-    t.string   "path_to_wav_slow"
-    t.string   "path_to_wav_fast"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -43,6 +51,10 @@ ActiveRecord::Schema.define(:version => 20121007221859) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

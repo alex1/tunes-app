@@ -5,16 +5,5 @@
   <%= @tune.name %>
 </p>
 
-<p>
-  <b>Path to mp3 slow:</b>
-  <%= @tune.path_to_mp3_slow %>
-</p>
-
-<p>
-  <b>Path to mp3 fast:</b>
-  <%= @tune.path_to_mp3_fast %>
-</p>
-
-
 <%= link_to 'Edit', edit_tune_path(@tune) %> |
 <%= link_to 'Back', tunes_path %>

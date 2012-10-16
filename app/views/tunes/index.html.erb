@@ -29,27 +29,20 @@
         <% @tunes.each do |tune| %>
         <div class="accordion-group">
           <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-              <%= tune.name %>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= tune.id %>">
+              <%= tune.name %> <br />
             </a>
           </div>
-          <div id="collapseOne" class="accordion-body collapse">
+          <div id="collapse<%= tune.id %>" class="accordion-body collapse">
             <div class="accordion-inner">
-              <audio id="<%= tune.name %> slow" class="tune" autobuffer controls>
-                <source src="audios/<%= tune.path_to_mp3_slow %>" type="audio/mpeg" />
-                <source src="audios/<%= tune.path_to_ogg_slow %>" type="audio/ogg" />
-                <source src="audios/<%= tune.path_to_wav_slow %>" type="audio/wav" />
-                Audio tag not supported
-              </audio>
-              <h3>Fast</h3>
-              <audio id="<%= tune.name %> fast" class="tune" autobuffer controls>
-                <source src="audios/<%= tune.path_to_mp3_fast %>" type="audio/mpeg" />
-                <source src="audios/<%= tune.path_to_ogg_fast %>" type="audio/ogg" />
-                <source src="audios/<%= tune.path_to_wav_fast %>" type="audio/wav" />
-                Audio tag not supported
-              </audio>
+
               <br />
               <%= link_to 'Edit', edit_tune_path(tune) %> <%= link_to 'Destroy', tune, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+              <%= tune.inspect %>
+              <%= tune.attachments.inspect %>
+              
+              <%= render :partial => "attachment", :collection => tune.attachments %>
+
             </div>
           </div>
         </div>

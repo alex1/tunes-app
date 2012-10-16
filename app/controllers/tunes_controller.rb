@@ -25,6 +25,9 @@ class TunesController < ApplicationController
   # GET /tunes/new.json
   def new
     @tune = Tune.new
+    @tune.attachments.build
+    Rails.logger.debug @tune
+    Rails.logger.debug @tune.attachments
 
     respond_to do |format|
       format.html # new.html.erb
