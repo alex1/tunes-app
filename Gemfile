@@ -27,9 +27,7 @@ gem 'devise'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
-group :devlopment do
-	gem 'debugger'
-end
+gem "nested_form"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

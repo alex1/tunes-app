@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery_nested_form
+
+$('document').ready(function() {
+
+	$('video,audio').mediaelementplayer({
+	        // add desired features in order
+	        // I've put the loop function second,
+	        features: ['playpause','loop','current','progress','duration','volume']
+	});
+
+});

@@ -37,19 +37,26 @@
             <div class="accordion-inner">
 
               <br />
-              <%= link_to 'Edit', edit_tune_path(tune) %> <%= link_to 'Destroy', tune, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-              <%= tune.inspect %>
-              <%= tune.attachments.inspect %>
               
-              <%= render :partial => "attachment", :collection => tune.attachments %>
+              <!-- <strong>Tune:</strong><%= tune.inspect %> -->
 
+
+                <% tune.attachments.each do |attachment| %>
+                  <strong><%= attachment.version_name %></strong> <br />
+                  <audio controls="control" preload="none" src="<%= ENV["RAILS_RELATIVE_URL_ROOT"] %>/tunes/<%= attachment.file_file_name %>" type="audio/mp3" >
+                  </audio>
+                <% end %>
+
+              <br />
+              <%= link_to 'Edit', edit_tune_path(tune) %> <%= link_to 'Destroy', tune, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
             </div>
           </div>
         </div>
         <% end %>
+
       </div>
       <br />
-    </div>
+      </div>
   </div>
   <hr>
   <footer>
