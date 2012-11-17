@@ -1,4 +1,7 @@
 class TunesController < ApplicationController
+
+ before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /tunes
   # GET /tunes.json
   def index
