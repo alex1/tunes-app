@@ -1,33 +1,30 @@
-<%= nested_form_for @tune do |f| %>
-  <% if @tune.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tune.errors.count, "error") %> prohibited this tune from being saved:</h2>
+<div class="new-form">
+  <%= nested_form_for @tune do |f| %>
+    <% if @tune.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tune.errors.count, "error") %> prohibited this tune from being saved:</h2>
 
-      <ul>
-      <% @tune.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @tune.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :tune_Title %>
+      <%= f.text_field :name %>
+    </div>
+    <hr />
+    <%= f.fields_for :attachments %>
+    
+    <%= f.link_to_add "", :attachments, :class => 'icon-plus-sign' %>
+     
+    <br />
+    <br />
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <br />
-    <%= f.text_field :name %>
-  </div>
-  <br/>
-<!-- 
- <%= f.fields_for :attachments do |a| %>
-    <%= a.file_field :file %>
-  <% end %> 
--->
-
-  <%= f.fields_for :attachments %>
-  <%= f.link_to_add "Add an attachment", :attachments %>
-   
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

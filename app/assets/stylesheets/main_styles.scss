@@ -1,3 +1,81 @@
-audio {
-	display: block !important;
+$brandFont: 'Arbutus';
+$headerFont: 'Oswald';
+$bodyFont: 'Oswald';
+
+body {
+	padding-top: 80px;
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $headerFont;
+	}
+}
+
+.alert {
+	margin: 20px 0;
+}
+
+
+
+.auxiliary {
+	text-align: center;
+	position: relative;
+	top: 10px;
+	height: 16px;
+}
+
+.mainLogo {
+	text-align: center;
+	font-family: $headerFont;
+	font-size: 4em;
+	color: #000;
+	line-height: 1em;
+}
+
+.userMenuOptions {
+	display: none;
+}
+
+.popover {
+    z-index: 2060 !important;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+position: fixed;
+right: 0;
+left: 0;
+background-color: #fff;
+}
+
+.navbar-inverse .navbar-inner {
+	background: none;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.accordion-group {
+	border: 0;
+	padding: 5px 0;
+	text-align: center;
+	.accordion-toggle {
+		text-align: center;
+		font-size: 1.8em;
+		font-family: $headerFont;
+		text-transform: uppercase;
+		line-height: 1.4em;
+	}
+	.active {
+		color: #f00;
+	}
+	.tune-version {
+		padding: 10px 0;
+	}
+}
+
+.field {
+	padding-top: 16px;
+	font-family: $bodyFont;
+	label {
+		font-family: $bodyFont;
+		width: 100px;
+		float: left;
+		padding-right: 10px;
+	}
 }

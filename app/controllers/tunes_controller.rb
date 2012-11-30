@@ -1,11 +1,13 @@
 class TunesController < ApplicationController
 
- before_filter :authenticate_user!, except: [:index, :show]
+  ## can add: , except: [:index, :show]
+  before_filter :authenticate_user! 
 
   # GET /tunes
   # GET /tunes.json
   def index
-    @tunes = Tune.all
+    #Makes a user only see their tunes
+    @tunes = current_user.tunes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,12 +43,15 @@ class TunesController < ApplicationController
   # GET /tunes/1/edit
   def edit
     @tune = Tune.find(params[:id])
+    #@tune = nil if @tune.user != current_user
+    #should redirect somewhere nice
   end
 
   # POST /tunes
   # POST /tunes.json
   def create
-    @tune = Tune.new(params[:tune])
+    # @tune = Tune.new(params[:tune])
+    @tune = current_user.tunes.create(params[:tune])
 
     respond_to do |format|
       if @tune.save

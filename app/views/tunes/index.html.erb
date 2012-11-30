@@ -1,68 +1,25 @@
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-<![endif]-->
-<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+<div class="accordion">
+  <% @tunes.each do |tune| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= tune.id %>">
+        <%= tune.name %> <br />
       </a>
-      <a class="brand" href="#">Somes Tunes I Am Learning</a>
-      <div class="nav-collapse collapse">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Login", new_user_session_path %>
-        <% end %>
-      </div><!--/.nav-collapse -->
+    </div>
+    <div id="collapse<%= tune.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
+          <% tune.attachments.each do |attachment| %>
+            <div class="tune-version">
+              <h4><%= attachment.version_name %></h4>
+              <audio controls="control" preload="none" width="100%" src="<%= ENV["RAILS_RELATIVE_URL_ROOT"] %>/tunes/<%= attachment.file_file_name %>" type="audio/mp3" >
+              </audio>
+            </div>
+          <% end %>
+        <%= link_to '', edit_tune_path(tune), :class => 'icon-edit' %> &nbsp; &nbsp; <%= link_to '', tune, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'icon-remove' %>
+      </div>
     </div>
   </div>
+  <% end %>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <%= link_to 'New Tune', new_tune_path %>
-      <div class="accordion">
-        <% @tunes.each do |tune| %>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= tune.id %>">
-              <%= tune.name %> <br />
-            </a>
-          </div>
-          <div id="collapse<%= tune.id %>" class="accordion-body collapse">
-            <div class="accordion-inner">
-
-              <br />
-              
-              <!-- <strong>Tune:</strong><%= tune.inspect %> -->
 
 
-                <% tune.attachments.each do |attachment| %>
-                  <strong><%= attachment.version_name %></strong> <br />
-                  <audio controls="control" preload="none" src="<%= ENV["RAILS_RELATIVE_URL_ROOT"] %>/tunes/<%= attachment.file_file_name %>" type="audio/mp3" >
-                  </audio>
-                <% end %>
-
-              <br />
-              <%= link_to 'Edit', edit_tune_path(tune) %> <%= link_to 'Destroy', tune, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-            </div>
-          </div>
-        </div>
-        <% end %>
-
-      </div>
-      <br />
-      </div>
-  </div>
-  <hr>
-  <footer>
-    <p>&copy; Company 2012</p>
-  </footer>
-</div> <!-- /container -->

@@ -23,4 +23,16 @@ $('document').ready(function() {
 	        features: ['playpause','loop','current','progress','duration','volume']
 	});
 
+
+	$('#userMenu').click(function() {
+  		$('.userMenuOptions').slideToggle();
+	});
+
+	$('.accordion-toggle').click(function() {
+		$(this).toggleClass('active');
+	});
+
+
+
+
 });

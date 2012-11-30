@@ -3,7 +3,7 @@ App::Application.routes.draw do
 
   resources :notes
 
-  get "home/index"
+  #get "home/index"
 
   devise_for :users
 

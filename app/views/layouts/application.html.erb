@@ -6,23 +6,85 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>App</title>
+        <title>Some Tunes</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Arbutus' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <%= stylesheet_link_tag    "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
+        <%= csrf_meta_tag %>
     </head>
 
 <body>
-<p> <%= notice %> </p>
-<p> <%= alert %> </p>
-<%= yield %>
+
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <div class="">
+        <div class="auxiliary">
+              <% if user_signed_in? %>
+                <a href="/" class="icon-home" ></a>&nbsp;&nbsp;&nbsp;
+                <%= link_to '', new_tune_path, :class => "icon-music" %>&nbsp;&nbsp;&nbsp;
+                <a href="#myModal" id="userMenu" class="icon-user" data-toggle="modal"></a>
+              <% else %>
+                <a href="#myModal" id="userMenu" class="icon-user" data-toggle="modal"></a>
+              <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="myModalLabel">Account</h3>
+  </div>
+  <div class="modal-body">
+    <% if user_signed_in? %>
+      <%= link_to 'Edit Account', edit_user_registration_path, :class => "edit-account"%> <br />
+      <%= link_to 'Sign Out', destroy_user_session_path,  :class => "sign-out", :method => :delete %>
+      <!-- <strong><%= current_user.email %></strong> -->
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> <br />
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12 mainLogo">
+          Somes Tunes
+      </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8 offset2">
+          <% if notice || alert %>
+              <div class="alert">
+                 <button type="button" class="close" data-dismiss="alert">×</button>
+                 <p> <%= notice %> </p>
+                 <p> <%= alert %> </p> 
+              </div>
+            <% end %> 
+        </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span8 offset2">
+      <%= yield %>
+    </div>
+  </div>
+<!--   <hr>
+  <footer>
+    <p>&copy; Company 2012</p>
+  </footer> -->
+</div> <!-- /container -->
 
 </body>
 </html>
