@@ -11,11 +11,12 @@
           <% tune.attachments.each do |attachment| %>
             <div class="tune-version">
               <h4><%= attachment.version_name %></h4>
-              <audio controls="control" preload="none" width="100%" src="<%= ENV["RAILS_RELATIVE_URL_ROOT"] %>/tunes/<%= attachment.file_file_name %>" type="audio/mp3" >
+              <audio controls="control" preload="none" width="100%" src="<%= attachment.file.url %>" type="audio/mp3" >
               </audio>
             </div>
           <% end %>
-        <%= link_to '', edit_tune_path(tune), :class => 'icon-edit' %> &nbsp; &nbsp; <%= link_to '', tune, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'icon-remove' %>
+        <%= link_to '', edit_tune_path(tune), :class => 'icon-edit' %> &nbsp; &nbsp; 
+        <%= link_to '', tune, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'icon-remove' %>
       </div>
     </div>
   </div>

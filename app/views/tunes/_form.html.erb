@@ -1,4 +1,4 @@
-<div class="new-form">
+<div class="new-form well">
   <%= nested_form_for @tune do |f| %>
     <% if @tune.errors.any? %>
       <div id="error_explanation">
@@ -24,7 +24,7 @@
     <br />
     <br />
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Add Tune", :class => 'btn' %>
     </div>
   <% end %>
 </div>

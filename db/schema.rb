@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117195410) do
+ActiveRecord::Schema.define(:version => 20130106203423) do
 
   create_table "assets", :force => true do |t|
     t.integer "tune_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20121117195410) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "tuning"
   end
 
   create_table "users", :force => true do |t|

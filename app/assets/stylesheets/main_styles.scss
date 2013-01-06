@@ -1,17 +1,27 @@
-$brandFont: 'Arbutus';
-$headerFont: 'Oswald';
+$brandFont: 'Germania One';
+$headerFont: 'Germania One';
 $bodyFont: 'Oswald';
 
 body {
+	font-family: $bodyFont;
 	padding-top: 80px;
 	h1, h2, h3, h4, h5, h6 {
 		font-family: $headerFont;
+	}
+	a, a:visited {
+		color: #F77;
 	}
 }
 
 .alert {
 	margin: 20px 0;
+	text-align: center;
 }
+
+.sign-in {
+	text-align:center;
+}
+
 
 
 
@@ -39,10 +49,10 @@ body {
 }
 
 .navbar-fixed-top, .navbar-fixed-bottom {
-position: fixed;
-right: 0;
-left: 0;
-background-color: #fff;
+	position: fixed;
+	right: 0;
+	left: 0;
+	background-color: #fff;
 }
 
 .navbar-inverse .navbar-inner {
@@ -54,6 +64,12 @@ background-color: #fff;
 	border: 0;
 	padding: 5px 0;
 	text-align: center;
+	a {
+		color: #000;
+		&:hover {
+			color: #f77;
+		}
+	}
 	.accordion-toggle {
 		text-align: center;
 		font-size: 1.8em;
@@ -62,11 +78,15 @@ background-color: #fff;
 		line-height: 1.4em;
 	}
 	.active {
-		color: #f00;
+		color: #f77;
 	}
 	.tune-version {
 		padding: 10px 0;
 	}
+}
+
+.new-form {
+	text-align: center;
 }
 
 .field {
