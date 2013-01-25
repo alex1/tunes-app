@@ -95,8 +95,9 @@ class TunesController < ApplicationController
  # DELETE /tunes/1
   # DELETE /tunes/1.json
   def destroy_all
-    @tunes = current_user.tunes
-    @tunes.destroy_all
+    
+    Tune.destroy_all(:user_id => current_user.id)
+
 
     respond_to do |format|
       format.html { redirect_to tunes_url }

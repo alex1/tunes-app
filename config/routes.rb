@@ -1,7 +1,12 @@
 App::Application.routes.draw do
+
+  get "tunes/destroy_all"
+  
   resources :tunes
 
   resources :notes
+
+  
 
   #get "home/index"
 
